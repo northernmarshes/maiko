@@ -51,17 +51,15 @@ main(int argc, char **argv)
     
     FILE *fin, *fout;
     char *filename = argv[1];
-    char *dimensions;
     BMPImage bmp;
     unsigned int tiles_w, tiles_h;
     int bytes_per_row, bytes_per_row_padded; // width, height is in tiles
     int image_size_bytes = 0; 
     int wp, hp; // width, height is in pixels
-
-    // calculate size of image from file name
-    // for now we always assume that the title is "untitled"
-    dimensions = filename + strlen("untitled");
-    sscanf(dimensions, "%x%*c%x", &tiles_w, &tiles_h);
+  
+    // hardcode default tile size
+    tiles_w = 85;
+    tiles_h = 46;
 
     wp = tiles_w * TILESIZE;
     printf("wp = %d\n", wp);
